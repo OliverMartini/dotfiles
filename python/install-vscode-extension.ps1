@@ -7,6 +7,5 @@
 #>
 
 Write-Information "Install Python Visual Studio Code Extensions" -InformationAction Continue
-
-#--- docker ---
+#
 code --install-extension ms-python.python

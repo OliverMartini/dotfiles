@@ -7,6 +7,7 @@
 #>
 
 Write-Information "Install PowerShell modules" -InformationAction Continue
-Install-Module -Name CredentialManager -Scope CurrentUser -Force
-Install-Module -Name posh-git -Force
+Install-Module -Name CredentialManager  -Scope CurrentUser  -Force
+Install-Module -Name posh-git           -Scope CurrentUser  -Force
+Install-Module -Name PSWindowsUpdate    -Scope CurrentUser  -Force
 RefreshEnv

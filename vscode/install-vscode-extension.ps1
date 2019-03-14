@@ -21,16 +21,6 @@ code --install-extension ms-azuretools.vscode-azurefunctions
 code --install-extension ms-vscode.csharp
 code --install-extension ms-mssql.mssql
 
-#--- java script ---
-Write-Information "Install JavaScript Visual Studio Code Extensions" -InformationAction Continue
-#
-code --install-extension dbaeumer.vscode-eslint
-#--- vuejs ---
-code --install-extension sdras.vue-vscode-extensionpack
-#--- browser debuger ---
-code --install-extension msjsdiag.debugger-for-chrome
-code --install-extension hbenl.vscode-firefox-debug
-
 #--- embedded ---
 Write-Information "Install Embedded Visual Studio Code Extensions" -InformationAction Continue
 #

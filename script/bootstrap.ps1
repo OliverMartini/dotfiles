@@ -32,6 +32,7 @@ RefreshEnv
 Write-Information "Install Chocolatey" -InformationAction Continue 
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 RefreshEnv
+choco feature enable -n=allowGlobalConfirmation
 
 #--- Enable Windows Features ---
 #

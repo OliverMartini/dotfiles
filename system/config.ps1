@@ -82,3 +82,9 @@ $commonDesktopFolder = [Environment]::GetFolderPath("CommonDesktopDirectory")
 Remove-Item $desktopFolder/*.lnk
 # delete shortcuts in Public Desktop folder
 Remove-Item $commonDesktopFolder/*.lnk
+
+#--- ColorTool ---
+ColorTool.exe -b solarized_dark
+#
+& "$PSScriptRoot\cmd-colors\Update-StartMenu.ps1"
+

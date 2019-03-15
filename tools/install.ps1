@@ -15,6 +15,7 @@ choco install -y firefox        --limit-output
 #--- Common Tools ---
 Write-Information "Install Common Tools" -InformationAction Continue
 #
+choco install -y colortool      --limit-output
 choco install -y 7zip.install   --limit-output
 choco install -y etcher         --limit-output
 choco install -y rufus          --limit-output

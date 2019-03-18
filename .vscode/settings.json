@@ -1,0 +1,7 @@
+{
+  "files.eol": "\n",
+  "files.associations": {
+    "zshrc.symlink": "shellscript",
+    "bashrc.symlink": "bashrc.symlink"
+  }
+}

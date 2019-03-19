@@ -6,8 +6,15 @@
     Author: Oliver Martini
 #>
 
+Write-Host ""
 Write-Information "Load $PSCommandPath" -InformationAction Continue
+$profileDir = Split-Path -parent $profile
 
 Push-Location (Join-Path $env:USERPROFILE ".dotfiles\powershell\etc")
 "components", "functions", "aliases", "exports", "extra" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location
+
+$localProfile = (Join-Path $profileDir "profile.local.ps1")
+if (Test-Path $localProfile) {
+  Invoke-Expression ". $localProfile"
+}

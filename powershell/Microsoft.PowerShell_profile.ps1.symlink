@@ -8,23 +8,12 @@
     Author: Oliver Martini
 #>
 
+Write-Host ""
 Write-Information "Load $PSCommandPath" -InformationAction Continue
 
 Push-Location (Join-Path $env:USERPROFILE ".dotfiles\powershell\etc")
 "components-shell" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location
-
-
-
-# Load Next View PowerShell profile
-#Write-Host ""
-#Write-Host "Load Next View PowerShell profile..."
-#. 'D:\NextView\nv-powershell\profile\NextView.PowerShell_profile.ps1'
-
-# Load Next View Europe PowerShell profile
-#Write-Host "Load Next View Europe PowerShell profile..."
-#$nvEuropeProfile = Join-Path $HOME '\Documents\WindowsPowerShell\NextViewEurope.PowerShell_profile.ps1'
-#.  $nvEuropeProfile
 	
 # List available powershell modules
 Write-Host ""

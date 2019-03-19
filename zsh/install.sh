@@ -46,7 +46,7 @@ read -p "Do you want to change your default shell? y/n" -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo "Now setting default shell..."
+    echo "Now setting default shell..."
     chsh -s $(`which zsh`) $USER
     if [[ $? -eq 0 ]]
     then

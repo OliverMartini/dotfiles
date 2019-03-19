@@ -62,7 +62,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sudo git history taskwarrior tmux tmuxinator zsh-autosuggestions nvm)
+plugins=(sudo git history taskwarrior tmux tmuxinator zsh-autosuggestions nvm virtualenv z)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -143,6 +143,11 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+# import custom files
+if [ -f ~/.zsh_aliases ]; then
+  . ~/.zsh_aliases
+fi
 
 # set home directory
 cd ~

@@ -73,7 +73,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Path to your dotfiles installation.
 export DOTFILES=~/.dotfiles
 # set TERM
-#export TERM=screen-256color
+export TERM=screen-256color
 
 # zsh tmux settings
 #ZSH_TMUX_AUTOSTART='true'

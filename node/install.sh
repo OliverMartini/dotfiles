@@ -14,25 +14,9 @@ else
 fi
 
 echo ""
+echo "symlink default-packages to $NVM_DIR"
+ln -s $HOME/.dotfiles/nvm/nvm_default-packages $HOME/.nvm/default-packages
+
+echo ""
 echo "install nodejs LTS ..."
 nvm install --lts
-
-echo ""
-echo "install spoof ..."
-if test ! $(which spoof)
-then
- npm install -g spoof
-fi
-
-echo ""
-echo "install @vuejs/cli"
-npm install -g @vue/cli
-
-echo ""
-echo "install yo, gulp-cli, generator-webapp"
-npm install -g yo gulp-cli generator-webapp
-
-echo ""
-echo "install yarn"
-npm install -g yarn
-

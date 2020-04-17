@@ -3,10 +3,9 @@
 
 export DOTFILES=$HOME/.dotfiles
 
-# find the installers and run them iteratively
-#find . -name install.sh1 | while read installer ; do sh -c "${installer}" ; done
-find $DOTFILES -name install.sh | while read installer ; 
-                                  do 
-                                    echo "${installer}" ;
-				    ${installer} ;
-				  done
+. $DOTFILES/tools/install.sh
+. $DOTFILES/zsh/install.sh
+. $DOTFILES/bash/install.sh
+. $DOTFILES/node/install.sh
+. $DOTFILES/vim/install.sh
+

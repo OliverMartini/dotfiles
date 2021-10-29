@@ -27,6 +27,8 @@ choco install -y winscp         --limit-output
 #
 choco install -y audacity       --limit-output
 choco install -y audacity-lame  --limit-output
+# 
+choco install -y dwgtrueview    --limit-output
 
 #--- Common Development Tools ---
 Write-Information "Install Common Dev Tools" -InformationAction Continue
@@ -35,3 +37,6 @@ choco install -y sysinternals   --limit-output
 choco install -y wireshark      --limit-output
 # web dev tools
 choco install -y insomnia-rest-api-client --limit-output
+winget install 43891JeniusApps.NightingaleRESTAPIClient
+# raspi pi imager
+choco install -y rpi-imager     --limit-output

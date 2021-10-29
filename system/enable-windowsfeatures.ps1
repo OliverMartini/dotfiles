@@ -19,6 +19,7 @@ if (!$featureContainers.State -or
   Enable-WindowsOptionalFeature -Online -FeatureName Containers -All -NoRestart
   Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
   Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
+  Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
   #
   $RunOnceKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
   set-itemproperty $RunOnceKey "NextRun" ('powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command ' + "iex $PSScriptRoot\script\bootstrap.ps1")

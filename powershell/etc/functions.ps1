@@ -33,7 +33,7 @@ function System-Update() {
   Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
   Update-Module
   Update-Help -Force
-  chocolatey upgrade -y
+  winget upgrade -all
   npm install npm -g
   npm update -g
 }
@@ -194,3 +194,4 @@ function Convert-ToDiskSize {
     else { $bytes /= 1KB }
   }
 }
+#>

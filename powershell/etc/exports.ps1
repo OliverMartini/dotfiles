@@ -11,8 +11,8 @@
 Write-Information "Set exports" -InformationAction Continue
 
 # Make vim the default editor
-#$env:EDITOR = "gvim --nofork"
-#$env:GIT_EDITOR = $env:EDITOR
+$env:EDITOR = "code"
+$env:GIT_EDITOR = $env:EDITOR
 
 # Disable the Progress Bar
 $ProgressPreference = 'SilentlyContinue'

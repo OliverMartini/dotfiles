@@ -1,0 +1,4 @@
+root: C:\Users\oliver\AppData\Roaming\nvm
+path: C:\tools\nodejs
+arch: 64
+proxy: none

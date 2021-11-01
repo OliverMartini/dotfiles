@@ -6,7 +6,7 @@
     Author: Oliver Martini
 #>
 
-Write-Information "Bootstrap Windows 10 environment" -InformationAction Continue
+Write-Information "Bootstrap Windows 11 environment" -InformationAction Continue
 
 # Check for admin rights
 $wid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -18,21 +18,15 @@ if (-not $prp.IsInRole($adm)) {
 }
 
 # Import EnvPath module
-Import-Module $PSScriptRoot\..\bin\EnvPaths
+Import-Module $PSScriptRoot\..\bin\EnvPaths.psm1
 
 #--- Configuration prompts (dot source the files) ---
 . $PSScriptRoot\..\git\prompts.ps1
+. $PSScriptRoot\..\tools\prompts.ps1
 
 #--- Add .dotfiles\bin to $PATH
 Add-EnvPath -Path $env:USERPROFILE\.dotfiles\bin -Container User
 RefreshEnv
-
-#--- Install Chocolatey ---
-#
-Write-Information "Install Chocolatey" -InformationAction Continue 
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-RefreshEnv
-choco feature enable -n=allowGlobalConfirmation
 
 #--- Enable Windows Features ---
 #
@@ -42,28 +36,34 @@ choco feature enable -n=allowGlobalConfirmation
 Write-Information "Install, configure Software & Tools" -InformationAction Continue
 #
 & "$PSScriptRoot\..\tools\install.ps1"
-# Git
-& "$PSScriptRoot\..\git\install.ps1"
+#
+& "$PSScriptRoot\..\dotnet-azure-tools\install.ps1"
+
+# PowerShell
+& "$PSScriptRoot\..\powershell\install.ps1"
+
+# .NET
+& "$PSScriptRoot\..\dotnet\install.ps1"
+
 # Visual Studio Code
 & "$PSScriptRoot\..\vscode\install.ps1"
-# Python
-& "$PSScriptRoot\..\python\install.ps1"
+
+# WSL2 - Ubuntu
+& "$PSScriptRoot\..\ubuntu\install.ps1"
 # Docker
 & "$PSScriptRoot\..\docker\install.ps1"
 
-#--- Ubuntu ---
-#& "$PSScriptRoot\..\ubuntu\install.ps1"
+
+# Package Provider
+#& "$PSScriptRoot\..\powershell\install-packageprovider.ps1"
+# Common modules
+#& "$PSScriptRoot\..\powershell\install-powershell-module.ps1"
 
 #--- PowerShell ---
-#
-# Package Provider
-& "$PSScriptRoot\..\powershell\install-packageprovider.ps1"
-# Common modules
-& "$PSScriptRoot\..\powershell\install-powershell-module.ps1"
 
 #--- Install Visual Studio Code Extensions ---
 #
-& "$PSScriptRoot\..\vscode\install-vscode-extension.ps1"
+& "$PSScriptRoot\..\tools\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\docker\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\powershell\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\python\install-vscode-extension.ps1"

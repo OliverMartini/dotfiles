@@ -11,6 +11,10 @@
 Write-Host ""
 Write-Information "Load $PSCommandPath" -InformationAction Continue
 
+# o-my-posh
+Import-Module -Name posh-git,oh-my-posh,Terminal-Icons
+Set-PoshPrompt -Theme craver
+
 Push-Location (Join-Path $env:USERPROFILE ".dotfiles\powershell\etc")
 "components-shell" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location
@@ -20,11 +24,6 @@ Write-Host ""
 Write-Host "Available PowerShell modules:"
 get-module | select-object -property Name, Version, ModuleType
 Write-Host ""
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
 
 # set current location
-Set-Location $env:USERPROFILE
+#Set-Location $env:USERPROFILE

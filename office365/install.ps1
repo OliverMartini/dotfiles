@@ -8,6 +8,5 @@
 
 Write-Information "Install Office 365" -InformationAction Continue
 #
-choco install -y microsoft-teams
-choco install -y office365business
+winget install --silent Microsoft.Teams
 RefreshEnv

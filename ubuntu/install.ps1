@@ -10,7 +10,7 @@ $featureWSL = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-
 # check if Windows Features are enabled
 if ($featureWSL.State) {
   Write-Information "Install Ubuntu" -InformationAction Continue
-  Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1804 -OutFile ~/Ubuntu.appx -UseBasicParsing
+  Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-2004 -OutFile ~/Ubuntu.appx -UseBasicParsing
   Add-AppxPackage -Path ~/Ubuntu.appx
   Ubuntu install --root
   Ubuntu run apt update

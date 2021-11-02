@@ -17,7 +17,7 @@ if [ -d ~/.oh-my-zsh/ ] ; then
 else
   echo "oh-my-zsh not found, now installing oh-my-zsh..."
   echo ''
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # oh-my-zsh plugin install
@@ -35,9 +35,9 @@ fi
 
 # powerlevel9k install
 echo ""
-echo "Now installing powerlevel9k..."
+echo "Now installing powerlevel10k..."
 if [ ! -d ~/.oh-my-zsh/custom/themes/powerlevel9k ] ; then
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 fi
 
 # Set default shell to zsh

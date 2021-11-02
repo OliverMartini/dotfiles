@@ -18,7 +18,6 @@ else
   echo "... Pathogen already installed"
 fi
 
-
 # Nerdtree for vim install
 echo ""
 echo "Now installing Nerdtree for Vim..."

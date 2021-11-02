@@ -7,9 +7,9 @@ echo ""
 echo "apt-get upgrade ..."
 sudo apt-get upgrade -y
 
-echo ""
-echo "apt-get upgrade lxd lxd-client netplan.io, as they are kept back"
-sudo apt-get upgrade lxd lxd-client netplan.io -y
+#echo ""
+#echo "apt-get upgrade lxd lxd-client netplan.io, as they are kept back"
+#sudo apt-get upgrade lxd lxd-client netplan.io -y
 
 echo ""
 echo "apt-get autoremove"
@@ -61,18 +61,22 @@ read -p "Do you want to install Azure CLI? y/n (This will take some time...)" -n
 echo ''
 if [[ $REPLY =~ ^[Yy]$ ]] ; then
   echo "Now installing az cli..."
+  sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
+
+  curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
   AZ_REPO=$(lsb_release -cs)
-  echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+  echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 
-  sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
-  sudo curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  sudo apt-get install apt-transport-https
-  sudo apt-get update && sudo apt-get install azure-cli
+  sudo apt-get update 
+  sudo apt-get install azure-cli -y
 
   if [[ $? -eq 0 ]]
   then
-    echo "Successfully installed Azure CLI 2.0."
+    echo "Successfully installed Azure CLI"
   else
     echo "Azure CLI not installed successfully." >&2
   fi

@@ -51,7 +51,7 @@ set -s escape-time 1
 #bind -T copy-mode-vi MouseDrag1Pane send -X copy-pipe "cat > /dev/clipboard" \; send -X clear-selection
 
 # Easy-to-remember split pane commands
-bind \ split-window -h -c '#{pane_current_path}' # vertical pane
+bind \\ split-window -h -c '#{pane_current_path}' # vertical pane
 bind - split-window -v -c '#{pane_current_path}' # horizontal pane
 unbind '"'
 unbind %

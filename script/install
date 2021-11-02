@@ -8,4 +8,5 @@ export DOTFILES=$HOME/.dotfiles
 . $DOTFILES/bash/install.sh
 . $DOTFILES/node/install.sh
 . $DOTFILES/vim/install.sh
+. $DOTFILES/dotnet/install.sh
 

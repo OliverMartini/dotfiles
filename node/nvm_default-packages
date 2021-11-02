@@ -1,4 +1,2 @@
-vue/cli
-ionic/cli
-firebase-tools
+@vue/cli
 json-server

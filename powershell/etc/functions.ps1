@@ -15,8 +15,8 @@ function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
 # Common Editing needs
-function Edit-Hosts { Invoke-Expression "sudo $(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
-function Edit-Profile { Invoke-Expression "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $profile" }
+function Edit-Hosts { Invoke-Expression "sudo $(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'code' }) $env:windir\system32\drivers\etc\hosts" }
+function Edit-Profile { Invoke-Expression "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'code' }) $profile" }
 
 # Sudo
 function sudo() {
@@ -61,7 +61,7 @@ function curlex($url) {
 # Empty the Recycle Bin on all drives
 function Empty-RecycleBin {
   $RecBin = (New-Object -ComObject Shell.Application).Namespace(0xA)
-  $RecBin.Items() | ForEach-Object {Remove-Item $_.Path -Recurse -Confirm:$false}
+  $RecBin.Items() | ForEach-Object { Remove-Item $_.Path -Recurse -Confirm:$false }
 }
 
 # Sound Volume
@@ -168,14 +168,14 @@ function Set-SoundUnmute {
 ### File System functions
 ### ----------------------------
 # Create a new directory and enter it
-function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path}
+function CreateAndSet-Directory([String] $path) { New-Item $path -ItemType Directory -ErrorAction SilentlyContinue; Set-Location $path }
 
 # Determine size of a file or total size of a directory
 function Get-DiskUsage([string] $path = (Get-Location).Path) {
   Convert-ToDiskSize `
   ( `
       Get-ChildItem .\ -recurse -ErrorAction SilentlyContinue `
-      | Measure-Object -property length -sum -ErrorAction SilentlyContinue
+    | Measure-Object -property length -sum -ErrorAction SilentlyContinue
   ).Sum `
     1
 }

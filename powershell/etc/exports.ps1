@@ -11,7 +11,7 @@
 Write-Information "Set exports" -InformationAction Continue
 
 # Make vim the default editor
-$env:EDITOR = "code"
+$env:EDITOR = "vim"
 $env:GIT_EDITOR = $env:EDITOR
 
 # Disable the Progress Bar

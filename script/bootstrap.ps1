@@ -42,17 +42,8 @@ Write-Information "Install, configure Software & Tools" -InformationAction Conti
 # PowerShell
 & "$PSScriptRoot\..\powershell\install.ps1"
 
-# .NET
-& "$PSScriptRoot\..\dotnet\install.ps1"
-
-# Visual Studio Code
-& "$PSScriptRoot\..\vscode\install.ps1"
-
 # WSL2 - Ubuntu
 & "$PSScriptRoot\..\ubuntu\install.ps1"
-# Docker
-& "$PSScriptRoot\..\docker\install.ps1"
-
 
 # Package Provider
 #& "$PSScriptRoot\..\powershell\install-packageprovider.ps1"
@@ -66,7 +57,6 @@ Write-Information "Install, configure Software & Tools" -InformationAction Conti
 & "$PSScriptRoot\..\tools\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\docker\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\powershell\install-vscode-extension.ps1"
-& "$PSScriptRoot\..\python\install-vscode-extension.ps1"
 
 #--- Configure environment ---
 #

@@ -77,12 +77,5 @@ Set-Alias emptytrash Empty-RecycleBin
 # Cleanup old files all drives
 Set-Alias cleandisks Clean-Disks
 
-# Reload the shell
-Set-Alias reload Reload-Powershell
-
-# http://xkcd.com/530/
-Set-Alias mute Set-SoundMute
-Set-Alias unmute Set-SoundUnmute
-
-# Update installed Chocolatey, NPM, and their installed packages.
+# Update installed winget, NPM, and their installed packages.
 Set-Alias update System-Update

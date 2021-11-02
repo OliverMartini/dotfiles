@@ -11,19 +11,50 @@
 Write-Host ""
 Write-Information "Load $PSCommandPath" -InformationAction Continue
 
-# o-my-posh
-Import-Module -Name posh-git,oh-my-posh,Terminal-Icons
-Set-PoshPrompt -Theme craver
-
 Push-Location (Join-Path $env:USERPROFILE ".dotfiles\powershell\etc")
-"components-shell" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
+"components-shell" | Where-Object { Test-Path "$_.ps1" } | ForEach-Object -process { Invoke-Expression ". .\$_.ps1" }
 Pop-Location
-	
+
+# Import powershell modules	
+if ($host.Name -eq 'ConsoleHost') {
+  Import-Module -Name PSReadLine
+}
+Import-Module -Name posh-git, oh-my-posh, Terminal-Icons
+
 # List available powershell modules
 Write-Host ""
 Write-Host "Available PowerShell modules:"
 get-module | select-object -property Name, Version, ModuleType
 Write-Host ""
 
-# set current location
-#Set-Location $env:USERPROFILE
+# o-my-posh
+Set-PoshPrompt -Theme craver
+
+
+# PowerShell parameter completion shim for winget
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+  param($wordToComplete, $commandAst, $cursorPosition)
+  [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+  $Local:word = $wordToComplete.Replace('"', '""')
+  $Local:ast = $commandAst.ToString().Replace('"', '""')
+  winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+  }
+}
+
+# PowerShell parameter completion shim for the dotnet CLI
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+  param($commandName, $wordToComplete, $cursorPosition)
+  dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+  }
+}
+
+# Searching for commands with up/down arrow is really handy.  The
+# option "moves to end" is useful if you want the cursor at the end
+# of the line while cycling through history like it does w/o searching,
+# without that option, the cursor will remain at the position it was
+# when you used up arrow, which can be useful if you forget the exact
+# string you started the search on.
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward

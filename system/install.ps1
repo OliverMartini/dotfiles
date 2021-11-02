@@ -11,5 +11,6 @@ Write-Information "Install System Tools" -InformationAction Continue
 winget install --silent Microsoft.PowerShell
 winget install --silent Microsoft.WindowsTerminal
 winget install --silent sysinternals
+winget install --silent Microsoft.PowerToys
 
 RefreshEnv

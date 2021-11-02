@@ -12,5 +12,5 @@ Write-Information "Import PowerShell components" -InformationAction Continue
 
 Push-Location (Join-Path $env:USERPROFILE ".dotfiles")
 # Git
-. .\git\powershell\components.ps1
+#. .\git\powershell\components.ps1
 Pop-Location

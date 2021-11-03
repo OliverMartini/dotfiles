@@ -10,7 +10,7 @@
 Write-Information "Install Browsers" -InformationAction Continue
 #
 winget install --silent Google.Chrome
-choco install -y firefox        --limit-output
+winget install --silent Mozilla.Firefox
 
 #--- Common Tools ---
 Write-Information "Install Common Tools" -InformationAction Continue

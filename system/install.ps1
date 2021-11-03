@@ -12,5 +12,6 @@ winget install --silent Microsoft.PowerShell
 winget install --silent Microsoft.WindowsTerminal
 winget install --silent sysinternals
 winget install --silent Microsoft.PowerToys
+winget install --silent OpenVPNTechnologies.OpenVPN
 
 RefreshEnv

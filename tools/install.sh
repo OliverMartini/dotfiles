@@ -22,7 +22,7 @@ sudo apt-get install build-essential git dfu-util unzip -y
 
 echo ""
 echo "install python3 ..."
-sudo apt-get install python3 python3-dev python3-pip python3-virtualenv -y
+sudo apt-get install python3 python3-dev python3-pip python3-venv -y
 sudo pip3 install speedtest-cli
 
 echo ""

@@ -18,10 +18,12 @@ Write-Information "Install Common Tools" -InformationAction Continue
 winget install --silent 7zip.7zip
 winget install --silent Balena.Etcher
 winget install --silent Rufus.Rufus
+winget install --silent RaspberryPiFoundation.RaspberryPiImager
 winget install --silent ShareX.ShareX
 winget install --silent WinSCP.WinSCP
 #
 #winget install --silent Audacity.Audacity
+winget install --silent Elgato.StreamDeck
 
 #--- Development Tools ---
 Write-Information "Install Dev Tools" -InformationAction Continue

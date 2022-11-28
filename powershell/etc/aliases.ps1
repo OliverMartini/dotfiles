@@ -79,3 +79,6 @@ Set-Alias cleandisks Clean-Disks
 
 # Update installed winget, NPM, and their installed packages.
 Set-Alias update System-Update
+
+# 
+Set-Alias im Import-Module

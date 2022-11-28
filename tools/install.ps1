@@ -58,6 +58,9 @@ winget install --silent Microsoft.AzureCLI
 Write-Information "Install Docker" -InformationAction Continue
 winget install --silent Docker.DockerDesktop
 
+Write-Information "Install Bitwarden" -InformationAction Continue
+winget install --silent Bitwarden.Bitwarden
+
 # Install AzCopy v10
 $downloadDir = $env:USERPROFILE + "\Downloads"
 $azCopyHome = $toolsHome + "\AzCopy"
@@ -67,3 +70,7 @@ Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile $dow
 Expand-Archive $downloadDir/AzCopy.zip $downloadDir/AzCopy -Force
 Get-ChildItem $downloadDir/AzCopy/*/azcopy.exe | Move-Item -Destination $azCopyHomeCmd
 Add-EnvPath -Path $azCopyHome -Container User
+
+Write-Information "Install 3d printer stuff" -InformationAction Continue
+winget install --silent Prusa3D.PrusaSlicer
+

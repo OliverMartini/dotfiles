@@ -19,19 +19,17 @@ Pop-Location
 if ($host.Name -eq 'ConsoleHost') {
   Import-Module -Name PSReadLine
 }
-Import-Module -Name posh-git, oh-my-posh, Terminal-Icons
+Import-Module -Name posh-git, Terminal-Icons
 Import-Module -Name Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
-#Import-Module -Name Az
 
 # List available powershell modules
 Write-Host ""
 Write-Host "Available PowerShell modules:"
-Write-Host "  - to enable Az modules, simply run 'im az' or 'Import-Module -Name Az'"
 get-module | select-object -property Name, Version, ModuleType
 Write-Host ""
 
-# o-my-posh
-Set-PoshPrompt -Theme craver
+# oh-my-posh
+oh-my-posh init pwsh | Invoke-Expression
 
 # PowerShell parameter completion shim for winget
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {

@@ -7,6 +7,6 @@
 #>
 
 Write-Information "Install Visual Studio 2022" -InformationAction Continue
-winget install Microsoft.VisualStudio.2022.Enterprise
+winget install Microsoft.VisualStudio.2022.Professional --override "--passive --config $PSScriptRoot\..\visualstudio\.vsconfig-2022"
 
 

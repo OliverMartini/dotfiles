@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-    Bootstrap Windows 10 environment
+    Bootstrap Windows 11 environment
     
   .NOTES
     Author: Oliver Martini
@@ -17,6 +17,10 @@ if (-not $prp.IsInRole($adm)) {
   Write-Error -Message $errorMessage -ErrorAction Stop -Category PermissionDenied -ErrorId $errorMessage
 }
 
+# Install Chocolatey, as it is required for some of the powershell environment handling.
+winget install --silent chocolatey.chocolatey
+Import-Module C:\ProgramData\chocolatey\helpers\chocolateyProfile.psm1
+
 # Import EnvPath module
 Import-Module $PSScriptRoot\..\bin\EnvPaths.psm1
 
@@ -32,28 +36,30 @@ RefreshEnv
 #
 & "$PSScriptRoot\..\system\enable-windowsFeatures.ps1"
 
+Write-Information "Install system tools" -InformationAction Continue
+#
+& "$PSScriptRoot\..\system\install.ps1"
+
 #--- Install Software & Tools ---
 Write-Information "Install, configure Software & Tools" -InformationAction Continue
 #
 & "$PSScriptRoot\..\tools\install.ps1"
-#
-& "$PSScriptRoot\..\dotnet-azure-tools\install.ps1"
 
 # PowerShell
 & "$PSScriptRoot\..\powershell\install.ps1"
+
+# Node
+& "$PSScriptRoot\..\node\install.ps1"
 
 # WSL2 - Ubuntu
 & "$PSScriptRoot\..\ubuntu\install.ps1"
 
 # Package Provider
-#& "$PSScriptRoot\..\powershell\install-packageprovider.ps1"
+& "$PSScriptRoot\..\powershell\install-packageprovider.ps1"
 # Common modules
-#& "$PSScriptRoot\..\powershell\install-powershell-module.ps1"
-
-#--- PowerShell ---
+& "$PSScriptRoot\..\powershell\install-powershell-module.ps1"
 
 #--- Install Visual Studio Code Extensions ---
-#
 & "$PSScriptRoot\..\tools\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\docker\install-vscode-extension.ps1"
 & "$PSScriptRoot\..\powershell\install-vscode-extension.ps1"
@@ -63,3 +69,5 @@ Write-Information "Install, configure Software & Tools" -InformationAction Conti
 & "$PSScriptRoot\..\system\config.ps1"
 # Git
 & "$PSScriptRoot\..\git\config.ps1"
+# Powershell
+& "$PSScriptRoot\..\powershell\config.ps1"

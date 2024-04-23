@@ -27,6 +27,11 @@ code --install-extension ms-dotnettools.csharp
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-mssql.mssql
 
+#--- prettier / spell checker, etc---
+code --install-extension esbenp.prettier-vscode
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension znck.grammarly
+
 
 #--- embedded ---
 #Write-Information "Install Embedded Visual Studio Code Extensions" -InformationAction Continue

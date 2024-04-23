@@ -13,6 +13,10 @@ Install-Module -Name posh-git, Terminal-Icons                                   
 # SecretManagement
 Install-Module -Name Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore  -Scope CurrentUser  -Force
 # InvokeBuild for PowerShell Module Build
-Install-Module InvokeBuild, BuildHelpers, platyPS, PSScriptAnalyzer                           -Scope CurrentUser -Force
-Install-Module Pester -RequiredVersion 4.10.1                                                 -Scope CurrentUser  -Force
+#Install-Module InvokeBuild, BuildHelpers, platyPS, PSScriptAnalyzer                           -Scope CurrentUser -Force
+#Install-Module Pester -RequiredVersion 4.10.1                                                 -Scope CurrentUser  -Force
+
+# Powershell
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell                                   -Scope CurrentUser -Force
+Install-Module -Name Microsoft.Graph                                                          -Scope CurrentUser -Force
 RefreshEnv

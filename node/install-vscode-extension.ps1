@@ -8,9 +8,10 @@
 
 Write-Information "Install JavaScript Visual Studio Code Extensions" -InformationAction Continue
 #
-#code --install-extension dbaeumer.vscode-eslint
+code --install-extension dbaeumer.vscode-eslint
 #--- vuejs ---
-code --install-extension sdras.vue-vscode-extensionpack
+code --install-extension vue.volar
+code --install-extension nuxtr.nuxt-vscode-extentions
 #--- browser debuger ---
 #code --install-extension msjsdiag.debugger-for-chrome
 #code --install-extension hbenl.vscode-firefox-debug

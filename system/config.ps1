@@ -10,8 +10,6 @@
 #--- Remove unecessary applications ---
 #
 Write-Information "Remove applications that come with Windows out of the box" -InformationAction Continue
-winget uninstall XING
-winget uninstall "Groove Music"
 winget uninstall "Get Help"
 
 #--- Remove shortcuts ---

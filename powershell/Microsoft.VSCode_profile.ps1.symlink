@@ -1,0 +1,33 @@
+<#
+  .SYNOPSIS
+    Profile for the Microsoft.PowerShell Shell
+    
+    This profile is not run by Visual Studio or other PowerShell instances
+
+  .NOTES
+    Author: Oliver Martini
+#>
+
+Write-Host ""
+Write-Information "Load $PSCommandPath" -InformationAction Continue
+
+Push-Location (Join-Path $env:USERPROFILE ".dotfiles\powershell\etc")
+"components-shell" | Where-Object { Test-Path "$_.ps1" } | ForEach-Object -process { Invoke-Expression ". .\$_.ps1" }
+Pop-Location
+
+# Import powershell modules	
+if ($host.Name -eq 'ConsoleHost') {
+  Import-Module -Name PSReadLine
+}
+Import-Module -Name posh-git, Terminal-Icons
+Import-Module -Name Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
+
+# List available powershell modules
+Write-Host ""
+Write-Host "Available PowerShell modules:"
+get-module | select-object -property Name, Version, ModuleType
+Write-Host ""
+
+# oh-my-posh
+oh-my-posh init pwsh | Invoke-Expression
+

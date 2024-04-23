@@ -31,6 +31,7 @@ winget install --silent WiresharkFoundation.Wireshark
 
 Write-Information "Install Web Dev Tools" -InformationAction Continue
 winget install --silent Insomnia.Insomnia
+winget install --silent Postman
 
 Write-Information "Install Git and tools" -InformationAction Continue
 winget install --silent Git.Git
@@ -40,21 +41,21 @@ Write-Information "Install Visual Studio Code" -InformationAction Continue
 choco install --silent Microsoft.VisualStudioCode
 
 Write-Information "Install dotnet SDK" -InformationAction Continue
-winget install --silent Microsoft.dotnet
 winget install --silent Microsoft.DotNet.SDK.8
 
 Write-Information "Install Python" -InformationAction Continue
-winget install --silent Python.Python.3
+winget install --silent Python.Python.3.12
 
 Write-Information "Install Microsoft SQL Server Management Studio" -InformationAction Continue
 winget install --silent Microsoft.SQLServerManagementStudio
 
 Write-Information "Install Azure Tools" -InformationAction Continue
-winget install --silent Microsoft.AzureStorageExplorer
-winget install --silent Microsoft.AzureFunctionsCoreTools
+winget install --silent Microsoft.Azure.StorageExplorer
+winget install --silent Microsoft.Azure.FunctionsCoreTools
 winget install --silent Microsoft.AzureDataStudio
 winget install --silent Microsoft.Bicep
 winget install --silent Microsoft.AzureCLI
+winget install --silent Microsoft.Azure.AZCopy.10
 
 Write-Information "Install Docker" -InformationAction Continue
 winget install --silent Docker.DockerDesktop
@@ -62,16 +63,6 @@ winget install --silent Docker.DockerDesktop
 Write-Information "Install Bitwarden" -InformationAction Continue
 winget install --silent Bitwarden.Bitwarden
 
-# Install AzCopy v10
-$downloadDir = $env:USERPROFILE + "\Downloads"
-$azCopyHome = $toolsHome + "\AzCopy"
-$azCopyHomeCmd = $azCopyHome + "\AzCopy.exe"
-mkdir $azCopyHome -force
-Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile $downloadDir/AzCopy.zip -UseBasicParsing
-Expand-Archive $downloadDir/AzCopy.zip $downloadDir/AzCopy -Force
-Get-ChildItem $downloadDir/AzCopy/*/azcopy.exe | Move-Item -Destination $azCopyHomeCmd
-Add-EnvPath -Path $azCopyHome -Container User
-
-Write-Information "Install 3d printer stuff" -InformationAction Continue
-winget install --silent Prusa3D.PrusaSlicer
+#Write-Information "Install 3d printer stuff" -InformationAction Continue
+#winget install --silent Prusa3D.PrusaSlicer
 

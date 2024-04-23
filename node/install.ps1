@@ -17,6 +17,8 @@ Copy-Item .\nvm_settings.txt -Destination $nvmHome\settings.txt -force
 mkdir $toolsHome -force
 [System.Environment]::SetEnvironmentVariable("NVM_HOME", $nvmHome, "User")
 [System.Environment]::SetEnvironmentVariable("NVM_SYMLINK", $nvmSymLink, "User")
+RefreshEnv
+
 Add-EnvPath -Path $env:NVM_HOME -Container User
 Add-EnvPath -Path $env:NVM_SYMLINK -Container User
 

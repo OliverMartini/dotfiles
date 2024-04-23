@@ -26,7 +26,7 @@ code --install-extension ms-dotnettools.vscode-dotnet-runtime
 code --install-extension ms-dotnettools.csharp
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-mssql.mssql
-code --install-extension ms-vscode.PowerShell
+
 
 #--- embedded ---
 #Write-Information "Install Embedded Visual Studio Code Extensions" -InformationAction Continue

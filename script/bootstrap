@@ -140,7 +140,7 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
-# symlink .dotfiles bin to ~
+# symlink .dotfiles/bin to ~/bin
 if [ -e $HOME/bin ]
 then
   echo ""
@@ -149,26 +149,6 @@ else
   echo ""
   echo "No current $HOME/bin folder found, link .dotfiles bin to ~..."
   ln -s $HOME/.dotfiles/bin $HOME/bin
-fi
-
-# install Source Code Pro nerd font on Linux systems (not wsl) and configure terminal
-# https://github.com/yktoo/yktools/blob/master/gnome-terminal-profile
-if [ ! -e /mnt/c/Users ]
-then
-  if [ -e /usr/local/share/fonts ]
-  then
-    sudo cp $HOME/.dotfiles/fonts/*.ttf /usr/local/share/fonts
-    sudo chown root /usr/local/share/fonts/*.ttf
-    sudo fc-cache -fv
-    $HOME/.dotfiles/terminal/gnome-terminal-profile import $HOME/.dotfiles/terminal/terminal.gnome && echo "terminal profile loaded successfully!"
-    # symlink VSCode User Settings
-    if [ -e $HOME/.config/Code/User ]
-    then
-      ln -s $HOME/.dotfiles/code/settings.json $HOME/.config/Code/User/settings.json && echo "VS Code settings.json applied successfully!"
-    else
-      echo "No installation of VS Code found. Will not attempt to symlink VS Code settings.json."
-    fi
-  fi
 fi
 
 echo ''

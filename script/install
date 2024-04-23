@@ -4,9 +4,7 @@
 export DOTFILES=$HOME/.dotfiles
 
 . $DOTFILES/tools/install.sh
-. $DOTFILES/zsh/install.sh
 . $DOTFILES/bash/install.sh
 . $DOTFILES/node/install.sh
-. $DOTFILES/vim/install.sh
 . $DOTFILES/dotnet/install.sh
 

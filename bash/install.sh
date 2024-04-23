@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# oh-my-bash install
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+
 # Bash color scheme
 #echo "Now installing solarized dark WSL color scheme..."
 #if [ ! -f ~/.dircolors ] ; then

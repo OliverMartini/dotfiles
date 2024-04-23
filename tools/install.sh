@@ -27,7 +27,7 @@ sudo pip3 install speedtest-cli
 
 echo ""
 echo "install tools ..."
-sudo apt-get install mc tmux zsh jq -y
+sudo apt-get install mc tmux jq -y
 
 echo ""
 echo ".git-completion.bash and .git-prompt.sh..."
@@ -46,30 +46,27 @@ if ! wget "$URL" -q -O "$HOME/.git-prompt.sh"; then
 	echo "ERROR: Couldn't download prompt script. Make sure you have a working internet connection." && exit 1
 fi
 
-echo ""
-echo ".git-completion.zsh..."
-GIT_VERSION=`git --version | awk '{print $3}'`
-echo "Now configuring git-completion..."
-URL="https://raw.github.com/git/git/v$GIT_VERSION/contrib/completion/git-completion.zsh"
-if ! wget "$URL" -q -O "$HOME/.git-completion.zsh"; then
-  echo "ERROR: Couldn't download completion script. Make sure you have a working internet connection." && exit 1
-fi
-
 # Setup and configure az cli
+# https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt#option-2-step-by-step-installation-instructions
 echo ''
 read -p "Do you want to install Azure CLI? y/n (This will take some time...)" -n 1 -r
 echo ''
 if [[ $REPLY =~ ^[Yy]$ ]] ; then
   echo "Now installing az cli..."
-  sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
+  sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
 
-  curl -sL https://packages.microsoft.com/keys/microsoft.asc |
-    gpg --dearmor |
-    sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+  sudo mkdir -p /etc/apt/keyrings
+  curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+    sudo gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
+  sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
 
-  AZ_REPO=$(lsb_release -cs)
-  echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
+  AZ_DIST=$(lsb_release -cs)
+  echo "Types: deb
+  URIs: https://packages.microsoft.com/repos/azure-cli/
+  Suites: ${AZ_DIST}
+  Components: main
+  Architectures: $(dpkg --print-architecture)
+  Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
 
   sudo apt-get update 
   sudo apt-get install azure-cli -y

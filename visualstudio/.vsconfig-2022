@@ -53,6 +53,7 @@
     "Component.Microsoft.VisualStudio.LiveShare.2022",
     "Microsoft.VisualStudio.Component.WslDebugging",
     "Microsoft.VisualStudio.Component.IntelliCode",
+    "Microsoft.Net.Component.4.6.2.TargetingPack",
     "Microsoft.Net.Component.4.8.1.SDK",
     "Microsoft.Net.Component.4.8.1.TargetingPack",
     "Microsoft.VisualStudio.Workload.NetWeb",
@@ -67,7 +68,13 @@
     "Microsoft.VisualStudio.Component.Azure.Waverton",
     "Microsoft.VisualStudio.ComponentGroup.Azure.CloudServices",
     "Microsoft.VisualStudio.Component.Azure.Powershell",
-    "Microsoft.VisualStudio.Workload.Azure"
+    "Microsoft.VisualStudio.Workload.Azure",
+    "Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites",
+    "Microsoft.VisualStudio.Component.DotNetModelBuilder",
+    "Microsoft.ComponentGroup.Blend",
+    "Microsoft.VisualStudio.Workload.ManagedDesktop",
+    "Microsoft.VisualStudio.Component.VC.Redist.14.Latest",
+    "Microsoft.Net.Component.4.6.2.SDK"
   ],
   "extensions": []
 }

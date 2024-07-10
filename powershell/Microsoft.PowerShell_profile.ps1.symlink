@@ -19,7 +19,7 @@ Pop-Location
 if ($host.Name -eq 'ConsoleHost') {
   Import-Module -Name PSReadLine
 }
-Import-Module -Name posh-git, Terminal-Icons
+Import-Module -Name posh-git, Terminal-Icons, z
 Import-Module -Name Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
 
 # List available powershell modules

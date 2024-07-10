@@ -8,6 +8,7 @@
 
 Write-Information "Install PowerShell modules" -InformationAction Continue
 Install-Module -Name PSWindowsUpdate                                                          -Scope CurrentUser  -Force
+Install-Module -Name z                                                                        -Scope CurrentUser  -Force
 # for o-my-posh
 Install-Module -Name posh-git, Terminal-Icons                                                 -Scope CurrentUser  -Force
 # SecretManagement

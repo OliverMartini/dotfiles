@@ -28,6 +28,7 @@ winget install --silent Elgato.StreamDeck
 #--- Development Tools ---
 Write-Information "Install Dev Tools" -InformationAction Continue
 winget install --silent WiresharkFoundation.Wireshark
+winget install --silent DevToys-app.DevToys
 
 Write-Information "Install Web Dev Tools" -InformationAction Continue
 winget install --silent Insomnia.Insomnia

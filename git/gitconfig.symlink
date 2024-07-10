@@ -1,4 +1,6 @@
 [user]
+	name = Oliver Martini
+	email = oliver.martini@nextviewsoftware.com
 	# These values are set in ~/.gitconfig_local
 
 [include]

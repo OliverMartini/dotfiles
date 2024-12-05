@@ -43,6 +43,7 @@ choco install --silent Microsoft.VisualStudioCode
 
 Write-Information "Install dotnet SDK" -InformationAction Continue
 winget install --silent Microsoft.DotNet.SDK.8
+winget install --silent Microsoft.DotNet.SDK.9
 
 Write-Information "Install Python" -InformationAction Continue
 winget install --silent Python.Python.3.12
